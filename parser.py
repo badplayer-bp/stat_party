@@ -120,7 +120,7 @@ class DBHandler:
 
     def __init__(self, filename):
         self.filename = filename
-        self.connection = sqlite3.connect(filename)
+       #self.connection = sqlite3.connect(filename)
 
 
 def main():
@@ -170,7 +170,7 @@ def main():
     if track_matches: parsed_dirs.add("\\Matches")
     if track_spectations: parsed_dirs.add("\\Spectations")
 
-    db = DBHandler(DB_FILENAME)
+    db = DBHandler(replay_dir + "\\" + DB_FILENAME)
 
     for parsed_dir in parsed_dirs:
         for root, dir, file in os.walk(replay_dir + parsed_dir):
