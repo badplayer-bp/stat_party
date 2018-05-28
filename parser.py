@@ -175,21 +175,23 @@ def main():
     for parsed_dir in parsed_dirs:
         for root, dir, file in os.walk(replay_dir + parsed_dir):
             for f in file:
-               full_path = os.path.join(root,f)
-               if first_run or (os.path.getmtime(full_path) > last_checked_time
+                full_path = os.path.join(root,f)
+                if first_run or (os.path.getmtime(full_path) > last_checked_time
                                and '.replay' in f):
-                   replay = ReplayParser(os.path.join(root, f))
-                   parsed_data = replay.parse()
-                   print("Spy name: {0} Sniper name: {1} Map: {2} Result: {3} " +
-                         "Start: {4} Duration: {5}".format(parsed_data["spy"],
-                         parsed_data["sniper"], parsed_data["map"],
-                         parsed_data["result"], parsed_data["start_time"],
-                         parsed_data["duration"]))
-                   print("Missions (picked): {0} Missions (selected): {1} " +
-                         "Missions (completed): {2}".format(
-                             parsed_data["missions"][PICKED], 
-                             parsed_data["missions"][SELECTED], 
-                             parsed_data["missions"][COMPLETED]))
+                    replay = ReplayParser(os.path.join(root, f))
+                    parsed_data = replay.parse()
+                    print("Spy name: {0} Sniper name: {1}".format(
+                        parsed_data["spy"], parsed_data["sniper"]))
+                    print("Map: {0} Result: {1}".format(
+                        parsed_data["map"], parsed_data["result"]))
+                    print("Start time {0}: Duration: {1}".format(
+                        parsed_data["start_time"], parsed_data["duration"]))
+                    print("Missions (picked): {}".format(
+                                        parsed_data["missions"][PICKED]))
+                    print("Missions (selected): {}".format(
+                                        parsed_data["missions"][SELECTED]))
+                    print("Missions (completed): {}".format(
+                                        parsed_data["missions"][COMPLETED])) 
 
     raise SystemExit(0)
 
