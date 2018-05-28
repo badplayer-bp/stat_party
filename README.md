@@ -1,2 +1,2 @@
 # stat_party
-SpyParty log parser/stat tracker
+SpyParty replay header parser/stat tracker
